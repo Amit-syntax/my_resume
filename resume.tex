@@ -1,0 +1,283 @@
+%%%%
+% MTecknology's Resume
+%%%%
+% Author: Michael Lustfield
+% License: CC-BY-4
+% - https://creativecommons.org/licenses/by/4.0/legalcode.txt
+%%%%
+
+\documentclass[letterpaper,10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN_FILE: mteck.sty
+%% NOTE: Everything between here and END_FILE can
+%% be relocated to "mteck.sty" and then included with:
+%\usepackage{mteck}
+
+% Dependencies
+% NOTE: Some packages (lastpage, hyperref) require second build!
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+
+% Sans-Serif
+%\usepackage[sfdefault]{FiraSans}
+%\usepackage[sfdefault]{roboto}
+%\usepackage[sfdefault]{noto-sans}
+%\usepackage[default]{sourcesanspro}
+
+% Serif
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% Colors
+% Use with \color{Name}
+% Can wrap entire heading with {\color{accent} [...] }
+\usepackage{xcolor}
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Misc. Options
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+
+% Adjust Margins
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.7pt}
+\raggedbottom
+\raggedright
+
+% ATS Readability
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%-----------------%
+% Custom Commands %
+%-----------------%
+
+% Centered title along with subtitle between HR
+% Usage: \documentTitle{Name}{Details}
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+    {\Huge\color{accentTitle} #1}
+    \vspace{10pt}
+    {\color{accentLine} \hrule}
+    \vspace{2pt}
+    %{\footnotesize\color{accentTitle} #2}
+    \footnotesize{#2}
+    \vspace{2pt}
+    {\color{accentLine} \hrule}
+  \end{center}
+}
+
+% Create a footer with correct padding
+% Usage: \documentFooter{\thepage of X}
+\newcommand{\documentFooter}[1]{
+  \setlength{\footskip}{10.25pt}
+  \fancyfoot[C]{\footnotesize #1}
+}
+
+% Simple wrapper to set up page numbering
+% Usage: \numberedPages
+% WARNING: Must run pdflatex twice!
+\newcommand{\numberedPages}{
+  \documentFooter{\thepage/\pageref{LastPage}}
+}
+
+% Section heading with horizontal rule
+% Usage: \section{Title}
+\titleformat{\section}{
+  \vspace{-5pt}
+  \color{accentText}
+  \raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+% Section heading with separator and content on same line
+% Usage: \tinysection{Title}
+\newcommand{\tinysection}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  {\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+}
+
+% Indented line with arguments left/right aligned in document
+% Usage: \heading{Left}{Right}
+\newcommand{\heading}[2]{
+  \hspace{10pt}#1\hfill#2\\
+}
+
+% Adds \textbf to \heading
+\newcommand{\headingBf}[2]{
+  \heading{\textbf{#1}}{\textbf{#2}}
+}
+
+% Adds \textit to \heading
+\newcommand{\headingIt}[2]{
+  \heading{\textit{#1}}{\textit{#2}}
+}
+
+% Template for itemized lists
+% Usage: \begin{resume_list} [items] \end{resume_list}
+\newenvironment{resume_list}{
+  \vspace{-7pt}
+  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
+}{
+  \end{itemize}
+  %\vspace{-2pt}
+}
+
+% Formats an item to use as an itemized title
+% Usage: \itemTitle{Title}
+\newcommand{\itemTitle}[1]{
+  \item[] \underline{#1}\vspace{4pt}
+}
+
+% Bullets used in itemized lists
+\renewcommand\labelitemi{--}
+
+%% END_FILE: mteck.sty
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%===================%
+% Amit's Resume %
+%===================%
+
+%\numberedPages % NOTE: lastpage requires a second build
+%\documentFooter{\thepage of 2} % Does similar without using lastpage
+\begin{document}
+
+  %---------%
+  % Heading %
+  %---------%
+
+  \documentTitle{Amit Kumar}{
+    % Web Version
+    %\raisebox{-0.05\height} \faPhone\ [redacted - web copy] ~
+    %\raisebox{-0.15\height} \faEnvelope\ [redacted - web copy] ~
+    %%
+    \href{tel:1234567890}{
+      \raisebox{-0.05\height} \faPhone\ +91 } ~ | ~
+    \href{mailto:amitkr20020405@gmail.com}{
+      \raisebox{-0.15\height} \faEnvelope\ amitkr20020405@gmail.com} ~ | ~
+\href{https://www.linkedin.com/in/amit-kumar-278563194/}{
+  \raisebox{-0.15\height} \faLinkedin\ Amit} ~ | ~
+    \href{https://github.com/Amit-syntax/}{
+      \raisebox{-0.15\height} \faGithub\ github.com/Amit-syntax}
+  }
+
+  %---------%
+  % Summary %
+  %---------%
+\tinysection{Professional Summary}
+A Backend Engineer over 5+ years of experience, skilled in Go, Python, JavaScript, TypeScript, and DevOps practices.
+Expertise in building scalable cloud solutions, automating infrastructure, and optimizing AI-driven systems. Proven track
+record in delivering high-performance, resource-efficient applications
+  %--------%
+  % Skills %
+  %--------%
+
+  \section{Skills}
+
+  \begin{flushleft}
+    \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=75pt]
+      \item[\textbf{Languages}] Go, Python, JavaScript, TypeScript, Bash.
+      \item[\textbf{Devops}] Kubernetes, Docker, Grafana, Prometheus, Ansible.
+      \item[\textbf{Databases}] MongoDB, MySQL, PostgreSQL, Pinecone, chromaDB.
+      \item[\textbf{Cloud}] AWS (EC2, S3, SES, IAM, Cloudformation, Route53)
+      \item[\textbf{Frameworks}] Djanog, FastAPI, Express.js, Ray.io
+      \item[\textbf{Libs}] Panadas, Numpy, matplotlib.
+      \item[\textbf{Testing}] Pytest, Vitest
+      \item[\textbf{Others}]  Linux, REST, Nginx, Apache2, Apache Kafka
+    \end{itemize}
+  \end{flushleft}
+
+  %------------%
+  % Experience %
+  %------------%
+
+  \section{Experience(5+yrs)}
+
+  \headingBf{Codewave}{Aug 2022-Present}
+  \headingIt{Backend Engineer}{SDE}
+
+  \begin{resume_list}
+
+\itemTitle{Client: Hosted.ai}
+\item Developed scalable Go backend solution for an AI infrastructure platform optimizing GPU utilization and enabling \textbf{GPU-as-a-Service} (GPUaaS) for enterprises and service providers.
+\item Automated GPUaaS deployment workflows using Ansible for infrastructure provisioning and configuration management.
+\item Integrated Kubernetes with \textbf{Ray.io} to efficiently manage distributed AI workloads.
+\item Configured the Prometheus stack for service discovery and real-time monitoring.
+\item Set up Grafana dashboards for comprehensive system performance and resource usage visualization.
+\item \textbf{Technologies Used:} Go, Python, Ansible, Kubernetes, Ray.io, Prometheus, Grafana, Docker, MySQL, Bash.
+\vspace{3pt}
+
+\itemTitle{Glue - (B2B SaaS)}
+\item the platform glue is a B2B SaaS product for self management
+\item \textbf{Technologies Used:} Typescript, NodeJs, RESTfull API, Docker, MongoDB.
+\vspace{3pt}
+
+
+\end{resume_list}
+
+\headingBf{Fyers (outsourced by codewave)}
+\headingIt{Backend Engineer}
+
+  \begin{resume_list}
+  \itemTitle{Myaccount Platform(Maintenance) }
+  \item Trading accounts platform rewritting in golang.
+  \item Handling automation of data in python.
+  \item Calculations of multiple metrics(holdings, global pnl, value curve, etc) in raw sql queries.
+  \item hands on experience with high demand infra.
+  \item \textbf{Technologies Used:} Golang, Python, Postgresql, mongodb, redis, AWS, Docker.
+  \vspace{3pt}
+  \end{resume_list}
+
+
+  \begin{resume_list}
+  \itemTitle{School Of Stocks (Edtech Platform)}
+  \item Worked on an educational technology platform focused on stock market training for the FinTech company Fyers.
+  \item Responsible for developing the entire backend using the Python-based Django framework.
+  \item Integrated the project with OpenEDX, an open-source learning platform also built with Django.
+  \item \textbf{Technologies Used:} Python, Django, OOP, Postgresql, mongodb, redis, AWS, Docker.
+  \vspace{3pt}
+  \end{resume_list}
+
+
+\headingBf{Menkou (Full Time - Remote)}{2020-Aug 2022}
+\headingIt{Backend Engineer}
+
+    \begin{resume_list}
+    \item Worked as full stack developer in Django Python, NodeJS
+    \item worked with javascript, creating frontend pages.
+    \item worked with data scraping automation in python
+    \item \textbf{Technologies Used:} Nodejs, Python, mysql, Pandas, numpy, selenium, bs4, bigquery.
+    \vspace{3pt}
+    \end{resume_list}
+
+\section{Open Source Project}
+\begin{resume_list}
+\item building a open-source notifier service(golang) which anyone can use
+\item this serivce is suppose to be supporting multiple channels of notification
+\item Making it flexible enough to plug new channels
+\end{resume_list}
+
+\end{document}
